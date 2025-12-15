@@ -1,0 +1,115 @@
+%HEADER
+Nonlinear analysis of a two-bar shallow truss.
+Solution using the Load Control Method (lcm):
+LoadFactor  Load    v (node 2)        N       
+1.0         40.0   -4.26954e-03  -2.08920e+02
+2.0         80.0   -9.24166e-03  -4.40731e+02
+3.0        120.0   -1.53561e-02  -7.08852e+02
+4.0        160.0   -2.38609e-02  -1.05071e+03
+5.0        200.0   -2.15970e-01  +8.62288e+02
+
+Solution using the Displacement Control Method (dcm):
+LoadFactor  v (node 2)
++2.1375      -0.01
++3.6000      -0.02
++4.4625      -0.03
++4.8000      -0.04
++4.6875      -0.05
++4.2000      -0.06
++3.4125      -0.07
++2.4000      -0.08
++1.2375      -0.09
++0.0000      -0.10
+-1.2375      -0.11
+-2.4000      -0.12
+-3.4125      -0.13
+-4.2000      -0.14
+-4.6875      -0.15
+-4.8000      -0.16
+-4.4625      -0.17
+-3.6000      -0.18
+-2.1375      -0.19
+-0.0000      -0.20
+
+%REMARKS
+Unidades: kN, m
+
+%HEADER.ANALYSIS.ALGORITHM
+'dcm'
+'lcm'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+2	2
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+20
+5
+
+%HEADER.ANALYSIS.STEP.FACTOR
+-0.01
+1.0
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%%HEADER.ANALYSIS.TARGET.ITERATIONS
+3
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-06
+
+%NODE
+3
+
+%NODE.COORD
+3
+1     0.000000             0.000000     0.000000
+2     0.99498743710662     0.100000     0.000000
+3     1.98997487421324     0.000000     0.000000
+
+%NODE.SUPPORT
+2
+1        1       1       0       0       0       0
+3        1       1       0       0       0       0
+
+%MATERIAL
+1
+
+%MATERIAL.LABEL
+1
+1       'mat'
+
+%MATERIAL.ISOTROPIC
+1
+1       200.0e06	0.0
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1    1   2.5e-3   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+
+%ELEMENT
+2
+
+%ELEMENT.PLTRUSSTL
+2
+1	1	1	2
+2	1	2	3
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+2     0.0    -40.0    0.0    0.0    0.0    0.0
+
+%END
+
+2     0.0    -1.0    0.0    0.0    0.0    0.0
+

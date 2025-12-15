@@ -1,0 +1,102 @@
+%HEADER
+Material and geometric nonlinear analysis of a toggle frame.
+----------------------------------------------------------------------------
+Plim  |        Ref         |    PLFRAMECR1      |     PLFRAMECR2
+----------------------------------------------------------------------------
+      |  Elastic  Plastic  |  Elastic   Plastic |  Elastic   Plastic
+Upper |   33.87    28.27   |  32.9585   28.0396 |  32.2083   27.5434
+Lower |  -5.518   -0.429   |  -5.2798   -1.6453 |  -4.7314   -1.0253
+----------------------------------------------------------------------------
+More results in the file ToggleFrame.xlsx
+----------------------------------------------------------------------------
+Ref:
+Battini, J.M., (2002), Co-rotational beam elements in instability problems, 
+Ph.D Thesis, Royal Institute of Tecnology, Sweden.
+----------------------------------------------------------------------------
+
+%HEADER.ANALYSIS.ALGORITHM
+'dcm'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+5	2
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+100
+
+%HEADER.ANALYSIS.STEP.FACTOR
+-0.008
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-06
+
+%NODE
+9
+
+%NODE.COORD
+9
+1      0.00000000    0.00000000    0.00000000
+2      3.23575000    0.12500000    0.00000000
+3      6.47150000    0.25000000    0.00000000
+4      9.70725000    0.37500000    0.00000000
+5     12.94300000    0.50000000    0.00000000
+6     16.17875000    0.37500000    0.00000000
+7     19.41450000    0.25000000    0.00000000
+8     22.65025000    0.12500000    0.00000000
+9     25.88600000    0.00000000    0.00000000
+
+%NODE.SUPPORT
+2
+1	1	1	0	0	0	0
+9	1	1	0	0	0	0
+
+%MATERIAL
+1
+
+%%MATERIAL.ISOTROPIC
+1
+1    1e7    0.3
+
+%MATERIAL.ELASTOPLASTIC
+1
+1   1e7  3e3  1e7  0.0  0.3
+
+%SECTION
+1
+
+%SECTION.BAR.RECTANGLE
+1
+1    1    0.753    0.243
+
+%SECTION.BAR.INTEGRATION
+'Gauss'  1   7
+'Fiber'  1   200
+
+%ELEMENT
+8
+
+%ELEMENT.PLFRAMECR1
+8
+1	1 	1	2
+2	1 	2	3
+3	1 	3	4
+4	1 	4	5
+5	1 	5	6
+6	1 	6	7
+7       1       7       8
+8       1       8       9
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+5    0.0    -1.0    0.0    0.0    0.0    0.0
+
+%END

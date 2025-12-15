@@ -1,0 +1,134 @@
+%HEADER
+L frame subject to end-moment.
+F. A. C., Monteiro, Uma Formulacao Co-rotacional Geral:
+Aplicacao a Porticos Espaciais, Master Thesis, Instituto
+Tecnologico de Aeronautica, 2004.
+Note: Load x displacement curve is presented in LFrameGeoNonLinear.xlsx
+
+%HEADER.ANALYSIS.ALGORITHM
+'clal'
+
+%HEADER.ANALYSIS.MATRIX.TYPE
+'unsym_skyline'
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+125
+
+%HEADER.ANALYSIS.STEP.FACTOR
+620
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+100
+
+%HEADER.ANALYSIS.TARGET.ITERATIONS
+6
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-03
+
+%NODE
+21
+
+%NODE.COORD
+21
+1     -169.7056	     0.0000	0.0000
+2     -152.7351	    16.9706	0.0000
+3     -135.7645	    33.9411	0.0000
+4     -118.7939	    50.9117	0.0000
+5     -101.8234	    67.8823	0.0000
+6      -84.8528	    84.8528	0.0000
+7      -67.8823	   101.8234	0.0000
+8      -50.9117	   118.7939	0.0000
+9      -33.9411	   135.7645	0.0000
+10     -16.9706	   152.7351	0.0000
+11       0.0000	   169.7056	0.0000
+12      16.9706	   152.7351	0.0000
+13      33.9411	   135.7645	0.0000
+14      50.9117	   118.7939	0.0000
+15      67.8823	   101.8234	0.0000
+16      84.8528	    84.8528	0.0000
+17     101.8234	    67.8823	0.0000
+18     118.7939	    50.9117	0.0000
+19     135.7645	    33.9411	0.0000
+20     152.7351	    16.9706	0.0000
+21     169.7056	     0.0000	0.0000
+
+%NODE.SUPPORT
+21
+1       0	1	1	1	1	0
+2       0	0	0	0	0	0
+3       0	0	0	0	0	0
+4       0	0	0	0	0	0
+5       0	0	0	0	0	0
+6       0	0	0	0	0	0
+7       0	0	0	0	0	0
+8       0	0	0	0	0	0
+9       0	0	0	0	0	0
+10      0	0	0	0	0	0
+11      1	0	0	0	0	1
+12      0	0	0	0	0	0
+13      0	0	0	0	0	0
+14      0	0	0	0	0	0
+15      0	0	0	0	0	0
+16      0	0	0	0	0	0
+17      0	0	0	0	0	0
+18      0	0	0	0	0	0
+19      0	0	0	0	0	0
+20      0	0	0	0	0	0
+21      0	1	1	1	1	0
+
+%MATERIAL
+1
+
+%MATERIAL.ISOTROPIC
+1
+1     7.12400E+04  0.31
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1   1   1.80000E+01    0.0  0.0  2.186188E+00  5.40000E-01  1.35000E+03  0.0  0.0  0.0
+
+%BEAM.SECTION.ORIENTATION
+2
+1   0.707106781  -0.707106781   0.0
+2  -0.707106781  -0.707106781   0.0
+
+%ELEMENT
+20
+
+%ELEMENT.FRAME3DCR
+20
+1      1      1      1      2
+2      1      1      2      3
+3      1      1      3      4
+4      1      1      4      5
+5      1      1      5      6
+6      1      1      6      7
+7      1      1      7      8
+8      1      1      8      9
+9      1      1      9      10
+10     1      1      10     11
+11     1      2      12     11
+12     1      2      13     12
+13     1      2      14     13
+14     1      2      15     14
+15     1      2      16     15
+16     1      2      17     16
+17     1      2      18     17
+18     1      2      19     18
+19     1      2      20     19
+20     1      2      21     20
+
+%LOAD.CASE
+   1
+
+%LOAD.CASE.NODAL.FORCE
+   3
+   1   0.00e+00     0.0e+00   0.00e+00   0.00e+00   0.00e+00   1.00e+00
+  11   0.00e+00     0.0e+00   1.00e-06   0.00e+00   0.00e+00   0.00e+00
+  21   0.00e+00     0.0e+00   0.00e+00   0.00e+00   0.00e+00  -1.00e+00
+
+%END

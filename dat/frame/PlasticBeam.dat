@@ -1,0 +1,97 @@
+%HEADER
+Elastoplastic analysis of a clamped beam subjeted to a concentrated
+load (P) at its center.
+The ultimate bending moment is Mu = fy*b*h^2/4 = 40e3*0.2*0.5^2 = 500
+The ultimate load (Pu) corresponding to the formation of a mechanism 
+with 3 plastic hinges is Pu = 8*Mu/L = 8*500/10 = 400
+The FEM results using 200 fibers in the section integration are:
+Mu = -4.99994e+02 (at Gauss points of elements 1 and 6)
+Mu =  4.99994e+02 (at Gauss points of elements 3 and 5)
+Pu = 403.4051 (dif = 0.85%)
+
+%HEADER.ANALYSIS.ALGORITHM
+'dcm'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+4	2
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+20
+
+%HEADER.ANALYSIS.STEP.FACTOR
+-0.01
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-06
+
+%NODE
+7
+
+%NODE.COORD
+7
+1	0.0	0.0	0.0
+2	0.1	0.0	0.0
+3	4.9	0.0	0.0
+4	5.0	0.0	0.0
+5	5.1	0.0	0.0
+6	9.9	0.0	0.0
+7      10.0	0.0	0.0
+
+%NODE.SUPPORT
+2
+1	1	1	0	0	0	1
+7	1	1	0	0	0	1
+
+%MATERIAL
+1
+
+%MATERIAL.ELASTOPLASTIC.ISOLINHARD
+1
+1   40e6  40e3  0.0  0.3
+
+%%MATERIAL.NONLINEAR.ELASTIC
+%%1
+%%1	4	0.0
+%%-1.0	-40e3
+%%-1.0e-3	-40e3
+%% 1.0e-3	 40e3
+%% 1.0   	 40e3
+
+%SECTION
+1
+
+%SECTION.BAR.RECTANGLE
+1
+1	1	0.2	0.5
+
+%SECTION.BAR.INTEGRATION
+'Fiber'  1   200
+'Gauss'  1   2
+
+%ELEMENT
+6
+
+%ELEMENT.PLFRAME
+6
+1	1	1	2
+2	1	2	3
+3	1	3	4
+4	1	4	5
+5	1	5	6
+6	1	6	7
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+4	0	-1.0	0	0	0	0
+
+%END

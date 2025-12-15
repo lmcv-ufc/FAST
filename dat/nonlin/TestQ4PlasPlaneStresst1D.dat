@@ -1,0 +1,79 @@
+%HEADER
+Plane strain Q4 element with von Mises (J2) elastoplastic material under 
+uniaxial strain.
+#The expected load-displacement curve is in TestQ4Plast1D.xlsx file.
+
+%HEADER.ANALYSIS.ALGORITHM
+'lcm'
+'dcm'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+2     1
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+20
+
+%HEADER.ANALYSIS.STEP.FACTOR
+20.0
+1.0e-4
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-08
+
+%NODE
+4
+
+%NODE.COORD
+4
+1     0.000000     0.000000     0.000000
+2     1.000000     0.000000     0.000000
+3     0.000000     1.000000     0.000000
+4     1.000000     1.000000     0.000000
+
+%NODE.SUPPORT
+2
+1        1       1       0       0       0       0
+3        1       0       0       0       0       0
+
+%MATERIAL
+1
+
+%MATERIAL.ELASTOPLASTIC.ISOLINHARD
+1
+1    200.0e9    0.3    200.0e6  22.222222e9
+1    200.0e9    0.0    200.0e6  22.222222e9
+1    200.0e9    0.3    200.0e6  0.0
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.2D
+1
+1    1     1.0
+
+%INTEGRATION.ORDER
+1
+1	2	2	1	2	2	1
+
+%ELEMENT
+1
+
+%ELEMENT.PLSTRESS.Q4
+1
+1  1   1   1   2   4   3
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.LINE.FORCE.UNIFORM
+1
+1      2	4	0	1.0e6	0.0	0.0
+
+%END
