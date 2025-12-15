@@ -1,0 +1,89 @@
+%HEADER
+Clamped-clamped beam subjected to a concentrated load with piecewise linear 
+time function. Example 10.9 of Mario Paz and William Leigh (2004), Structural 
+Dynamics - Theory and Computation, 5th ed., Kluwer Academic Publishers.
+----------------------------------------------------------------------------
+Displacement Node 3
+      Reference    Newmark - dt = 0.005
+Max     1.241        1.2634
+Min    -0.45        -0.4443
+----------------------------------------------------------------------------
+
+%HEADER.ANALYSIS.ALGORITHM
+'newmark'
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+200
+
+%HEADER.ANALYSIS.PRINT.STEPS
+1
+
+%HEADER.ANALYSIS.TIME.STEP
+0.005
+
+%NODE
+5
+
+%NODE.COORD
+5
+1              0.0            0.0              0.0     
+2             50.0            0.0              0.0       
+3            100.0            0.0              0.0       
+4            150.0            0.0              0.0       
+5            200.0            0.0              0.0       
+     
+%NODE.SUPPORT
+5
+1	1	1	0	0	0	1
+2	0	0	0	0	0	0
+3	0	0	0	0	0	0
+4	0	0	0	0	0	0
+5	1	1	0	0	0	1
+
+%MATERIAL
+1
+
+%MATERIAL.ISOTROPIC
+1
+1	6.58e06	 0.0
+
+%MATERIAL.DENSITY
+1
+1	0.10
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1  1  1.0  0.0  0.0  0.0  0.0  100.0  0.0  0.0  0.0
+
+%ELEMENT
+4
+
+%ELEMENT.PLFRAME
+4
+1	1	1      2
+2	1	2      3
+3	1	3      4
+4       1	4      5
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%TIME.FUNCTION.TABLE
+4
+0.0	    1.0
+0.1	    1.0
+0.2	    0.0
+1000.0      0.0
+
+%LOAD.CASE.NODAL.FORCE
+1
+3	0.0	-1.0e04	   0.0	   0.0	  0.0	 0.0
+
+%END

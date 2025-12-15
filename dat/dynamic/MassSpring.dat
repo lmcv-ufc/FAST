@@ -1,0 +1,88 @@
+%HEADER
+Mass-spring (1 dof) system subjected to an harmonic load F(t) = F0*sin(wc*t).
+----------------------------------------------------------------------------
+Exact solution:
+u(t) = F0/(k*(1 - (wc/w)^2))*(sin(wc*t) - (wc/w)*sin(w*t))
+k = EA/L = 200e3, m = 400, w = sqrt(k/m) = 22.36068, wc = 2*pi/Tc = pi, F0 = 1e4
+------------------------------------------------
+t          Exact       Newmark        Newmark 
+                      dt = 0.01     dt = 0.005
+------------------------------------------------
+0.10    1.0124E-02    1.0083E-02    1.0114E-02
+0.50    5.8051E-02    5.8105E-02    5.8066E-02
+0.90    8.9068E-03    9.1037E-03    8.9519E-03
+1.50   -5.7100E-02   -5.7564E-02   -5.7228E-02
+2.50    5.5326E-02    5.6522E-02    5.5652E-02
+3.50   -5.2970E-02   -5.5060E-02   -5.3523E-02
+------------------------------------------------
+More results in the file MassSpring.xlsx
+
+%HEADER.ANALYSIS.ALGORITHM
+'newmark'
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+2000
+
+%HEADER.ANALYSIS.PRINT.STEPS
+4
+
+%HEADER.ANALYSIS.TIME.STEP
+0.005
+
+%NODE
+2
+
+%NODE.COORD
+2
+1	0.000000	0.0000000	0.000000
+2	1.000000	0.0000000	0.000000
+
+%NODE.SUPPORT
+2
+1	1	1	0	0	0	0
+2	0	1	0	0	0	0
+
+%NODAL.MASS
+1
+2	400.0	0.0	0.0	0.0	0.0	0.0
+
+%MATERIAL
+1
+
+%MATERIAL.ISOTROPIC
+1
+1	200.0e09	0.0
+
+%MATERIAL.DENSITY
+1
+1	0.0
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1  1  1.0e-6  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+
+%ELEMENT
+1
+
+%ELEMENT.PLTRUSS
+1
+1	1	1	2
+
+%LOAD
+1
+1	'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%TIME.FUNCTION.HARMONIC
+1.0	2.0	0.0	0.0	1.0e10	
+
+%LOAD.CASE.NODAL.FORCE
+1
+2	1.0e4	0.0	0.0	0.0	0.0	0.0
+
+%END

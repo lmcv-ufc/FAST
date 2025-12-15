@@ -1,0 +1,81 @@
+%HEADER     
+Beam with 2 elastic supports (nodes 2 and 3).
+Finite element results:
+Displ     U              V          RZ
+1    +0.00000e+00 +0.00000e+00 -9.20388e-03 
+2    +0.00000e+00 -1.69705e-02 -7.01032e-03 
+3    +0.00000e+00 -2.78495e-02 -4.52913e-03 
+Element Forces
+1
+-0.00000e+00 +3.01505e+01 -4.60194e+00 
++0.00000e+00 +6.15049e+00 +3.16990e+01 
+2
+-0.00000e+00 -3.84951e+00 +3.16990e+01 
++0.00000e+00 -2.78495e+01 -5.68434e-14 
+
+%NODE
+3
+
+%NODE.COORD
+3
+1	0.0	0.0	0.0
+2	2.0	0.0	0.0
+3	4.0	0.0	0.0
+
+%NODE.SUPPORT
+1
+1	1	1	0	0	0	0
+
+%SPRING.PROPERTY
+2
+1	linear	 500.0
+2	linear	1000.0
+
+%SPRING.SUPPORT
+2
+1	1	6	1
+2	3	2	2
+
+%MATERIAL
+1
+
+%MATERIAL.LABEL
+1
+1	'mat1'
+
+%MATERIAL.ISOTROPIC
+1
+1     20.0e+06	0.0
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1   1   0.06  0  0  0  0  0.0008  0  0.4  0
+
+%ELEMENT
+2
+
+%ELEMENT.PLFRAME
+2
+1	1	1	2
+2	1	2	3
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+2	0.0	-10.0	0.0	0.0	0.0	0.0
+
+%LOAD.CASE.PLFRAME.UNIFORM
+2
+1       0	0.0	-12.0	0.0
+2       0	0.0	-12.0	0.0
+
+%END

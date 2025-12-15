@@ -1,0 +1,60 @@
+%HEADER
+Bar under uniform load (L = 5m, A = 1m x 1m, and sigx = 100 MPa)
+
+%NODE
+8
+
+%NODE.COORD
+8
+1   0.0   0.0   1.0
+2   5.0   0.0   1.0
+3   5.0   1.0   1.0
+4   0.0   1.0   1.0
+5   0.0   0.0   0.0
+6   5.0   0.0   0.0
+7   5.0   1.0   0.0
+8   0.0   1.0   0.0
+
+%NODE.SUPPORT
+4
+1        1       0       0       0       0       0
+4        1       0       0       0       0       0
+5        1       1       1       0       0       0
+8        1       0       0       0       0       0
+
+%MATERIAL
+1
+
+%MATERIAL.ISOTROPIC
+1
+1    200e9    0.3
+1    200e9    0.0
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.3D
+1
+1    1
+
+%INTEGRATION.ORDER
+1
+1	2	2	2	2	2	2
+
+%ELEMENT
+1
+
+%ELEMENT.BRICK8
+1
+1    1    1    1    2    3    4    5    6    7    8
+
+%LOAD
+1
+1       'Load_Case_1'
+%LOAD.CASE
+1
+%LOAD.CASE.AREA.UNIFORM
+1
+1    2    6    7    0    100.0e6    0.0    0.0
+
+%END

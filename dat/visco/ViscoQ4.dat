@@ -1,0 +1,97 @@
+%HEADER
+Viscoelastic analyis of a Q4 element subjected to a unit step load from
+t = 0 to t = 10s.
+----------------------------------------
+Horizontal displacement (node 4)
+----------------------------------------
+t = 10s
+Exact = 8.9173e-06
+FEM   = 8.9162e-06 (dt = 0.01)
+FEM   = 8.9119e-06 (dt = 0.05)
+----------------------------------------
+t = 20s
+Exact = 9.3616e-07
+FEM   = 9.3710e-06 (dt = 0.01)
+FEM   =	9.4087e-07 (dt = 0.05)
+----------------------------------------
+Time-displacement curves in the file ViscoQ4.xlsx
+
+%HEADER.ANALYSIS.ALGORITHM
+'quasistatic'
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+800
+
+%HEADER.ANALYSIS.PRINT.STEPS
+2
+
+%HEADER.ANALYSIS.TIME.STEP
+0.05
+
+%NODE
+4
+
+%NODE.COORD
+4
+1     0.000000     0.000000     0.000000
+2     1.000000     0.000000     0.000000
+3     0.000000     1.000000     0.000000
+4     1.000000     1.000000     0.000000
+
+%NODE.SUPPORT
+2
+1        1       1       0       0       0       0
+3        1       0       0       0       0       0
+
+%MATERIAL
+1
+
+%MATERIAL.VISCOELASTIC
+1
+1       0.1e06	0.3	1
+0.4e06	1.0
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.2D
+1
+1	1	1.0
+
+%INTEGRATION.ORDER
+1
+1	2	2	1	2	2	1
+
+%ELEMENT
+1
+
+%ELEMENT.PLSTRESS.Q4
+1
+1  1   1   1   2   4   3
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%TIME.FUNCTION.TABLE
+4
+0.0	1.0
+10.001	1.0
+10.001	0.0
+40.0	0.0
+
+%LOAD.CASE.LINE.FORCE.UNIFORM
+1
+1      2	4	0	1.0	0.0	0.0
+
+%END
+
+%HEADER.ANALYSIS.TOTAL.TIME
+
+2
+0.0	0.0
+1.0	1.0
+

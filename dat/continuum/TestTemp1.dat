@@ -1,0 +1,63 @@
+%HEADER
+
+%NODE
+4
+
+%NODE.COORD
+4
+1     0.000000     0.000000     0.000000
+2     1.000000     0.000000     0.000000
+3     0.000000     1.000000     0.000000
+4     1.000000     1.000000     0.000000
+
+%NODE.SUPPORT
+2
+1        1       1       0       0       0       0
+3        1       0       0       0       0       0
+
+%MATERIAL
+1
+
+%MATERIAL.LABEL
+1
+1       'm1'
+
+%MATERIAL.ISOTROPIC
+1
+1      200.0e06    0.3
+
+%MATERIAL.THERMAL.EXPANSION
+1
+1      1.2e-5
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.2D
+1
+1    1     0.01
+
+%INTEGRATION.ORDER
+1
+1	2	2	1	2	2	1
+
+%ELEMENT
+1
+
+%ELEMENT.PLSTRESS.Q4
+1
+1   1   1   1   2   4   3
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.ELEMENT.TEMPERATURE
+1
+1      100.0      100.0
+
+%END
+

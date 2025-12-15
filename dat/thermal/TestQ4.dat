@@ -1,0 +1,95 @@
+%HEADER
+Solution of a plane heat conduction problem with one Q4 element.
+2x2 Gauss quadrature is used.
+
+Expected temperature at node 4.
+|--------------------------------------------|
+| Fish and Belytschko (2007) [1] | -3.04000  |
+| FAST                           | -3.04390  |
+|--------------------------------------------|
+
+Expected flux in element 1.
+|------------------------------------------------------|
+| First Integration Point ---------------------------- |
+|------------------------------- |  FLUX_X  |  FLUX_Y  |
+| Fish and Belytschko (2007) [1] | +5.81000 | +3.60000 |
+| FAST                           | +5.81163 | +3.59625 |
+|------------------------------------------------------|
+| Second Integration Point --------------------------- |
+|------------------------------- |  FLUX_X  |  FLUX_Y  |
+| Fish and Belytschko (2007) [1] | +0.90000 | +3.60000 |
+| FAST                           | +0.89906 | +3.59625 |
+|------------------------------------------------------|
+| Third Integration Point ---------------------------- |
+|------------------------------- |  FLUX_X  |  FLUX_Y  |
+| Fish and Belytschko (2007) [1] | +4.95000 | +19.8000 |
+| FAST                           | +4.95460 | +19.8184 |
+|------------------------------------------------------|
+| Fourth Integration Point --------------------------- |
+|------------------------------- |  FLUX_X  |  FLUX_Y  |
+| Fish and Belytschko (2007) [1] | -2.30000 | +19.8000 |
+| FAST                           | -2.29944 | +19.8184 |
+|------------------------------------------------------|
+
+
+Ref:
+----------------------------------------------------------------------------
+[1] Fish J., Belytschko T.. A First Course in Finite Elements, Example 8.2 
+(p 197). 1nd. ed. John Wiley & Sons, Ltd. 2007.
+----------------------------------------------------------------------------
+
+
+
+%HEADER.ANALYSIS.ALGORITHM
+'heatconduction'
+
+%NODE
+4
+
+%NODE.COORD
+4
+1        0.000000     1.000000     0.000000
+2        0.000000     0.000000     0.000000
+3        2.000000     0.500000     0.000000
+4        2.000000     1.000000     0.000000
+
+%MATERIAL
+1
+
+%MATERIAL.THERMAL.ISOTROPIC
+1
+1	5	
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.2D
+1
+1	1	1
+
+%INTEGRATION.ORDER
+1
+1	2	2	1	2	2	1
+
+%ELEMENT
+1
+
+%ELEMENT.PLTHERMAL.Q4
+1
+1    1   1     1   2   3   4 
+
+%LOAD.CASE.LINE.HEAT.FLUX.UNIFORM
+1
+1	4	1	20
+
+%LOAD.CASE.BODY.HEAT.SOURCE
+1
+1	6
+
+%LOAD.CASE.PRESCRIBED.TEMPERATURE
+3
+1  0.0
+2  0.0
+3  0.0
+
+%END

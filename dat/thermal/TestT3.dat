@@ -1,0 +1,88 @@
+%HEADER
+Solution of a plane heat conduction problem with two T3 elements.
+
+Expected temperature at node 4.
+|--------------------------------------------|
+| Fish and Belytschko (2007) [1] | -1.78800  |
+| FAST                           | -1.78824  |
+|--------------------------------------------|
+
+Expected flux in element 1.
+|---------------------------------------------------|
+|------------------------------- | FLUX_X | FLUX_Y  |
+| Fish and Belytschko (2007) [1] | 0.0000 | 0.0000  |
+| FAST                           | 0.0000 | 0.0000  |
+|---------------------------------------------------|
+
+Expected flux in element 2.
+|----------------------------------------------------|
+|--------------------------------| FLUX_X  | FLUX_Y  |
+| Fish and Belytschko (2007) [1] | 4.47000 | 17.8800 |
+| FAST                           | 4.47059 | 17.8824 | 
+|----------------------------------------------------|
+
+Ref:
+----------------------------------------------------------------------------
+[1] Fish J., Belytschko T.. A First Course in Finite Elements, Example 8.1 
+(p 193). 1nd. ed. John Wiley & Sons, Ltd. 2007.
+----------------------------------------------------------------------------
+
+%HEADER.ANALYSIS.ALGORITHM
+'HeatTransfer'
+
+%NODE
+4
+
+%NODE.COORD
+4
+1        0.000000     0.000000     0.000000
+2        2.000000     0.500000     0.000000
+3        0.000000     1.000000     0.000000
+4        2.000000     1.000000     0.000000
+
+%MATERIAL
+1
+
+%MATERIAL.THERMAL.ISOTROPIC
+1
+1	5	
+
+%SECTION
+1
+
+%SECTION.HOMOGENEOUS.ISOTROPIC.2D
+1
+1	1	1
+
+%INTEGRATION.ORDER
+1
+1	2	2	1	2	1	1
+
+%ELEMENT
+2
+
+%ELEMENT.THERMAL2D.T3
+2
+1    1   1     1   2   3  
+2    1   1     2   4   3  
+
+%LOAD.CASE.LINE.HEAT.FLUX.UNIFORM
+1
+2	4	3	20
+
+%LOAD.CASE.BODY.HEAT.SOURCE
+2
+1	6
+2	6
+
+%LOAD.CASE.PRESCRIBED.TEMPERATURE
+3
+1  0.0
+2  0.0
+3  0.0
+
+
+
+%END
+
+

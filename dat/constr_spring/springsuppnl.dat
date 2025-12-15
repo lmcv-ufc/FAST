@@ -1,0 +1,92 @@
+%HEADER     
+Cantilever beam with a bilinear rotational spring and length L = 4, subjected
+to a force P = -10*LF, generating a moment M = P*L = -40*LF at the spring.
+Computed output:
+LF       M(node 1)       RZ(node 1)
+0.1    -4.00000e+00    -2.00000e-04 
+0.2    -8.00000e+00    -4.00000e-04 
+0.3    -1.20000e+01    -6.00000e-04 
+0.4    -1.60000e+01    -8.00000e-04 
+0.5    -2.00000e+01    -1.00000e-03 
+0.6    -2.40000e+01    -1.80000e-03 
+0.7    -2.80000e+01    -2.60000e-03 
+0.8    -3.20000e+01    -3.40000e-03 
+0.9    -3.60000e+01    -4.20000e-03 
+1.0    -4.00000e+01    -5.00000e-03 
+
+%HEADER.ANALYSIS.ALGORITHM
+'snr'
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+10
+
+%HEADER.ANALYSIS.STEP.FACTOR
+0.1
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-06
+
+%NODE
+2
+
+%NODE.COORD
+2
+1	0.0	0.0	0.0
+2	4.0	0.0	0.0
+
+%NODE.SUPPORT
+1
+1	1	1	0	0	0	0
+
+%SPRING.PROPERTY
+1
+1	nonlinear	 4
+-5.0e-3    -40.0
+-1.0e-3    -20.0
+ 1.0e-3     20.0
+ 5.0e-3     40.0
+
+%SPRING.SUPPORT
+1
+1	1	6	1
+
+%MATERIAL
+1
+
+%MATERIAL.LABEL
+1
+1	'mat1'
+
+%MATERIAL.ISOTROPIC
+1
+1     20.0e+06	0.0
+
+%SECTION
+1
+
+%SECTION.BAR.GENERAL
+1
+1   1   0.06  0  0  0  0  0.0008  0  0.4  0
+
+%ELEMENT
+1
+
+%ELEMENT.PLFRAME
+1
+1	1	1	2
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+2	0.0	-10.0	0.0	0.0	0.0	0.0
+
+%END

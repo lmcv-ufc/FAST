@@ -1,0 +1,106 @@
+%HEADER
+Foure's column.
+----------------------------------------------------------------------------
+Maximum load (Pmax)
+Experimental = 454 kN
+Bratina/FEM  = 445 kN
+FAST/EUROCEB = 460.07 kN (100 fibers)
+FAST/NBRCEB  = 485.68 kN (100 fibers)
+----------------------------------------------------------------------------
+Ref: 
+S. Bratina, M. Saje, I. Planinc (2004) On materially and geometrically 
+non-linear analysis of reinforced concrete planar frames, International 
+Journal of Solids and Structures, v. 41, pp. 7181–7207.
+----------------------------------------------------------------------------
+
+%HEADER.ANALYSIS.ALGORITHM
+'dcm'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+5	1
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+60
+
+%HEADER.ANALYSIS.STEP.FACTOR
+-1.0e-3
+       
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+30
+
+%HEADER.ANALYSIS.TOLERANCE
+1.0e-08
+
+%NODE
+5
+
+%NODE.COORD
+5
+1	0.0	0.0000	0.0	
+2	0.0	0.5625	0.0
+3	0.0	1.1250	0.0
+4	0.0	1.6875	0.0
+5	0.0	2.2500	0.0
+
+%NODE.SUPPORT
+1
+1	1	1	0	0	0	1
+
+%MATERIAL
+2
+
+%MATERIAL.LABEL
+2
+1	'Concrete'
+2	'Steel'
+
+%MATERIAL.CONCRETE.EUROCEB
+1
+1    38.3e6   -2.3e-3    3.36e10    2.9315e6    33.639e9    2.325e-3   200e9   0.0226
+
+%%MATERIAL.CONCRETE.NBRCEB
+1
+1    38.3e6   2.9315e6    33.639e9    2.325e-3   200e9   0.0226
+
+%MATERIAL.NONLINEAR.ELASTIC
+1
+2	4	0.0
+-20e-3	   -465e6
+-2.325e-3  -465e6
+ 2.325e-3   465e6
+ 20e-3 	    465e6
+
+%SECTION
+1
+
+%SECTION.RC.RECTANGLE
+1
+1	1	0.2	0.15	2	2	0.0	-0.055	2.26e-4	2	0.0	0.055	2.26e-4	  
+
+%SECTION.BAR.INTEGRATION
+'Fiber'  1   100
+'Fiber'  1   600
+'Gauss'  1   3
+
+%ELEMENT
+4
+
+%ELEMENT.PLFRAMECR2
+4
+1	1	1	2
+2	1	2	3
+3	1	3	4
+4	1	4	5
+
+%LOAD
+1
+1       'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.NODAL.FORCE
+1
+5	0	-1.0e3	0	0	0	0.015e3
+
+%END

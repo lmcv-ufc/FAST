@@ -1,0 +1,133 @@
+%HEADER
+This example deals with the uniaxial failure of a laminated 
+composite plate subjected to axial load in the x-direction.
+In this analysis, the Hashin Model is used with a degradation
+factor of 1e-10.
+
+Reference: Rocha, I. B. C. M. Analise e Otimizacao de Cascas
+           Laminadas Considerando Nao-linearidade Geometrica
+           e Falha Progressiva. Universidade Federal do Ceara,
+           2013.
+
+First Ply Failure: Step 63. Load Factor: 6300.0
+This failure can be identified when it takes more than 1
+iteration for the Newton-Raphson step to converge.
+
+Ultimate Failure: Step 65. Final Load Factor: 6500.0
+This failure can be identified when the step doesn't
+achieve convergence due to very large displacements.
+
+%HEADER.ANALYSIS.ALGORITHM
+'snr'
+
+%HEADER.ANALYSIS.DISPLACEMENT.CONTROL
+1647 1
+
+%HEADER.ANALYSIS.STEP.FACTOR
+100
+
+%HEADER.ANALYSIS.TOLERANCE
+1e-6
+
+%HEADER.ANALYSIS.TARGET.ITERATIONS
+4
+
+%HEADER.ANALYSIS.MAXIMUM.STEPS
+100
+
+%HEADER.ANALYSIS.MAXIMUM.ITERATIONS
+20
+
+%NODE
+8
+
+%NODE.COORD
+8
+1	0.076200	0.015875	0.000000
+2	0.076200	0.000000	0.000000
+3	0.000000	0.000000	0.000000
+4	0.076200	0.031750	0.000000
+5	0.000000	0.015875	0.000000
+6	0.000000	0.031750	0.000000
+7	0.038100	0.031750	0.000000
+8	0.038100	0.000000	0.000000
+
+%NODE.COORD.L1L2
+8
+1      0.076200        0.012700      0.000000
+2      0.076200        0.000000      0.000000
+3      0.000000        0.000000      0.000000
+4      0.076200        0.025400      0.000000
+5      0.000000        0.012700      0.000000
+6      0.000000        0.025400      0.000000
+7      0.038100        0.025400      0.000000
+8      0.038100        0.000000      0.000000
+
+%NODE.SUPPORT
+8
+1	0	0	1	0	0	0
+2	0	0	1	0	0	0
+3	1	0	0	0	0	0
+4	0	0	1	0	0	0
+5	1	1	0	0	0	0
+6	1	0	0	0	0	0
+7	0	0	1	0	0	0
+8	0	0	1	0	0	0
+
+%MATERIAL
+1
+
+%SECTION
+1
+
+%MATERIAL.PROGFAIL.HASHIN
+1
+1 161.32e9   9.65e9    9.65e9    0.34   0.34   0.49    5.99e9    5.99e9   3.38e9 2709.34e6 1075.46e6 64.53e6 258.52e6 64.53e6 258.52e6 83.06e6 83.06e6 83.06e6 1e-10
+
+%SECTION.LAMINATED.SHELL
+1
+1 1.0 0.0 0.0 20
+1 0.00013208 45
+1 0.00013208 90
+1 0.00013208 135
+1 0.00013208 45
+1 0.00013208 135
+1 0.00013208 0
+1 0.00013208 45
+1 0.00013208 135
+1 0.00013208 45
+1 0.00013208 135
+1 0.00013208 135
+1 0.00013208 45
+1 0.00013208 135
+1 0.00013208 45
+1 0.00013208 0
+1 0.00013208 135
+1 0.00013208 45
+1 0.00013208 135
+1 0.00013208 90
+1 0.00013208 45
+
+%INTEGRATION.ORDER
+1
+1	3	3	1	3	3	1
+
+%ELEMENT
+1
+
+%ELEMENT.SHALLOWSHELL.Q8
+1
+1	1	1	3	8	2	1	4	7	6	5
+
+%LOAD
+1
+1	'Load_Case_1'
+
+%LOAD.CASE
+1
+
+%LOAD.CASE.LINE.FORCE.UNIFORM
+1
+1	2	4	0	140.0944882	0.000000	0.000000
+
+%END
