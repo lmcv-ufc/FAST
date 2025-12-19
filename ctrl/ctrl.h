@@ -267,6 +267,7 @@
 #define _CTRL_H
 
 #include "sysmat.h"
+#include <vector>
 
 // -------------------------------------------------------------------------
 // Forward declarations:
